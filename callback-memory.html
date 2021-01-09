@@ -9,12 +9,20 @@
     <span id="count"></span>
   </body>
   <script>
+    const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
     let a = 0;
-    function main() {
-      a++;
-      document.getElementById("count").innerText = a;
-      setTimeout(main, 100);
+    async function main() {
+      while (true) {
+        a++;
+        document.getElementById("count").innerText = a;
+        await sleep(0.1);
+      }
     }
+    // async function main() {
+    //   document.getElementById("count").innerText = "a";
+    //   await sleep(0.1);
+    //   main();
+    // }
     main();
   </script>
 </html>
